@@ -1,0 +1,43 @@
+
+let parse filename =
+  let left_side = ref [] in
+  let right_side = ref [] in
+  
+  let ic = open_in filename in
+  try
+    while true do 
+      let line = input_line ic in
+        let parts = String.split_on_char ' ' line |> List.filter (fun s -> s <> "") in
+        Printf.printf "Parts: %s\n" (String.concat " " parts);
+        left_side := (List.hd parts) :: !left_side;
+        right_side := (List.tl parts @ !right_side);
+    done;
+  with End_of_file -> close_in ic;
+  
+  (Array.of_list (List.rev !left_side), Array.of_list (List.rev !right_side))
+
+let () = 
+  let argc = Array.length Sys.argv in
+  if argc = 2 then
+    let left_array, right_array = parse Sys.argv.(1) in
+    (* Print out array contents*)
+    (* sort lists*)
+    Array.sort compare left_array;
+    Array.sort compare right_array;
+
+    (* merge lists*)
+
+    (*take difference of every element at index and sum*)
+    let sum = ref 0 in
+    for i = 0 to (Array.length left_array) - 1 do
+      sum := !sum + abs ((int_of_string left_array.(i)) - (int_of_string right_array.(i)));
+    done;
+
+
+    Printf.printf "Left side:\n";
+    Array.iter (fun x -> Printf.printf "%s\n" x) left_array;
+    Printf.printf "Right side:\n";
+    Array.iter (fun x -> Printf.printf "%s\n" x) right_array;
+    Printf.printf "Sum: %d\n" !sum;
+  else
+    Printf.printf "Usage: %s <filename>\n" Sys.argv.(0)

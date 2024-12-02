@@ -1,0 +1,3 @@
+(executable
+ (name soln)
+ (libraries str))
