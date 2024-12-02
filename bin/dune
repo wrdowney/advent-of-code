@@ -1,4 +1,4 @@
-(executable
- (public_name aoc)
- (name main)
- (libraries aoc str))
+(executables
+ (public_names Day01 Day02)
+ (names Day01 Day02)
+ (libraries str core advent))
