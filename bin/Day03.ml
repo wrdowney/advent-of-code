@@ -26,7 +26,7 @@ let rec multiply2 text should_mul sum =
     else multiply2 rest false sum
 
 let run () =
-  let line = read_lines "input3" |> String.concat ~sep:" " in
+  let line = read_lines "inputs/input3" |> String.concat ~sep:" " in
   let matches = Re.matches pattern line |> List.map ~f:multiply in
   let matches2 = Re.matches pattern2 line in
   let res = List.fold matches ~init:0 ~f:( + ) in
