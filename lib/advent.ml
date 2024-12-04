@@ -14,3 +14,11 @@ let split_first s =
 let square x = x *. x
 
 let num_filter = Re.Pcre.re {|\d+|} |> Re.compile ;;
+
+let time f =
+  let t = Core_unix.gettimeofday () in
+  let res = f () in
+  Printf.printf "Execution time: %f seconds\n"
+                (Core_unix.gettimeofday () -. t);
+  res
+;;
