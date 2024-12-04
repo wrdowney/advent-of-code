@@ -1,6 +1,7 @@
 open Core
 open Advent
 
+
 let pattern = Re.Pcre.re {|mul\(\d+,\d+\)|} |> Re.compile
 let pattern2 = Re.Pcre.re {|do\(\)|don't\(\)|mul\(\d+,\d+\)|} |> Re.compile
 
