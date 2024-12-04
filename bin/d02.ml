@@ -23,8 +23,8 @@ let rec can_remove_one nums prev =
     else can_remove_one (y :: rest) (prev @ [ x ])
 ;;
 
-let () =
-  let lines = read_lines "input2" in
+let run () =
+  let lines = read_lines "inputs/input2" in
   let nums =
     List.map lines ~f:(fun line -> String.split ~on:' ' line |> List.map ~f:int_of_string)
   in
@@ -37,4 +37,8 @@ let () =
       acc + if sequence_check report false false || can_remove_one report [] then 1 else 0)
   in
   Printf.printf "\nPart 1: %i\nPart 2: %i\n" res res2
+;;
+
+let () =
+  time run
 ;;

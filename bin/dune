@@ -1,4 +1,4 @@
 (executables
- (public_names Day01 Day02 Day03 d04)
- (names Day01 Day02 Day03 d04)
+ (public_names d01 d02 d03 d04)
+ (names d01 d02 d03 d04)
  (libraries str core advent))

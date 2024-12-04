@@ -1,3 +1,4 @@
+open Advent
 let count_occurences arr x =
   let count = ref 0 in 
   Array.iter (fun y -> if y = x then incr count) arr;
@@ -19,12 +20,10 @@ let parse filename =
   
   (Array.of_list (List.rev !left_side), Array.of_list (List.rev !right_side))
 
-let () = 
+let run () = 
   let argc = Array.length Sys.argv in
   if argc = 2 then
     let left_array, right_array = parse Sys.argv.(1) in
-    (* Print out array contents*)
-    (* sort lists*)
     Array.sort compare left_array;
     Array.sort compare right_array;
 
@@ -46,3 +45,8 @@ let () =
     Printf.printf "Sum2: %d\n" !sum2;
   else
     Printf.printf "Usage: %s <filename>\n" Sys.argv.(0)
+  ;;
+
+let () = 
+  time run
+;;
