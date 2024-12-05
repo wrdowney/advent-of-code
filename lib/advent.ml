@@ -22,3 +22,6 @@ let time f =
                 (Core_unix.gettimeofday () -. t);
   res
 ;;
+
+let add_pairs (a1, b1) (a2, b2) = a1 + a2, b1 + b2
+let pairs_equal (a1, b1) (a2, b2) = a1 = a2 && b1 = b2
